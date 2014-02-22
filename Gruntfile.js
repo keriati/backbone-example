@@ -184,7 +184,7 @@ module.exports = function (grunt) {
                 // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
                     baseUrl: '<%= yeoman.app %>/scripts',
-                    optimize: 'none',
+//                    optimize: 'none',
                     paths: {
                         'templates': '../../.tmp/scripts/templates',
                         'jquery': '../../app/bower_components/jquery/jquery',
