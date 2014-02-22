@@ -191,34 +191,52 @@ module.exports = function (grunt) {
                         'underscore': '../../app/bower_components/underscore/underscore',
                         'backbone': '../../app/bower_components/backbone/backbone'
                     },
-                    // TODO: Figure out how to make sourcemaps work with grunt-usemin
-                    // https://github.com/yeoman/grunt-usemin/issues/30
-                    //generateSourceMaps: true,
-                    // required to support SourceMaps
-                    // http://requirejs.org/docs/errors.html#sourcemapcomments
                     preserveLicenseComments: false,
                     useStrict: true,
                     wrap: true,
                     modules: [
-                        // All modules should be here
-                        // First: main and app modules
                         {
-                            name: 'main'
+                            name: 'main',
+                            include: [
+                                'approuter',
+                                'templates',
+                                'models/modelA',
+                                'models/modelB',
+                                'models/modelC',
+                                'collections/collectionA',
+                                'collections/collectionB'
+                            ]
                         },
-                        // "A" module
                         {
                             name: 'views/moduleA/viewA',
+                            include: [
+                                'collections/moduleA/collectionX'
+                            ],
                             exclude: [
-                                'jquery',
                                 'underscore',
-                                'backbone'
+                                'backbone',
+                                'templates'
+                            ]
+                        },
+                        {
+                            name: 'views/moduleB/viewB',
+                            exclude: [
+                                'underscore',
+                                'backbone',
+                                'templates'
+                            ]
+                        },
+                        {
+                            name: 'views/moduleC/viewC',
+                            exclude: [
+                                'underscore',
+                                'backbone',
+                                'templates'
                             ]
                         }
                     ],
-                    out: null,
-                    dir: '<%= yeoman.dist %>'
-
-                    //uglify2: {} // https://github.com/mishoo/UglifyJS2
+                    dir: '<%= yeoman.dist %>/scripts',
+                    mainConfigFile: '<%= yeoman.app %>/scripts/main.js'
                 }
             }
         },
@@ -396,10 +414,10 @@ module.exports = function (grunt) {
         'htmlmin',
         'concat',
         'cssmin',
-        'uglify',
-        'copy',
-        'rev',
-        'usemin'
+//        'uglify',
+        'copy'
+//        'rev',
+//        'usemin'
     ]);
 
     grunt.registerTask('default', [

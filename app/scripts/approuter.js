@@ -53,7 +53,7 @@ define([
 
             var that = this;
 
-            require(['models/modelA', 'views/moduleC/viewC'], function(Collection, View) {
+            require(['models/modelC', 'views/moduleC/viewC'], function(Collection, View) {
                 var myCollection = new Collection();
 
                 that._renderView(new View({collection: myCollection}));

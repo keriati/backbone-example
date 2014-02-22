@@ -3,8 +3,9 @@
 define([
     'underscore',
     'backbone',
-    'templates'
-], function (_, Backbone, JST) {
+    'templates',
+    'collections/moduleA/collectionX'
+], function (_, Backbone, JST, Collection) {
     'use strict';
 
     var ViewaView = Backbone.View.extend({
