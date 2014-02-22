@@ -198,7 +198,26 @@ module.exports = function (grunt) {
                     // http://requirejs.org/docs/errors.html#sourcemapcomments
                     preserveLicenseComments: false,
                     useStrict: true,
-                    wrap: true
+                    wrap: true,
+                    modules: [
+                        // All modules should be here
+                        // First: main and app modules
+                        {
+                            name: 'main'
+                        },
+                        // "A" module
+                        {
+                            name: 'views/moduleA/viewA',
+                            exclude: [
+                                'jquery',
+                                'underscore',
+                                'backbone'
+                            ]
+                        }
+                    ],
+                    out: null,
+                    dir: '<%= yeoman.dist %>'
+
                     //uglify2: {} // https://github.com/mishoo/UglifyJS2
                 }
             }
